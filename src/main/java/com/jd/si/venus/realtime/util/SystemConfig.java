@@ -16,6 +16,11 @@ public class SystemConfig {
     public static final String model_namespace;
     public static final int zk_timeout;
     public static final String token;
+    public static final String SEPARATOR ;
+    //temp
+    public static final String cloudConfigId ;
+    public static final String cloudToken ;
+
 
     static {
         InputStream in = null;
@@ -39,5 +44,8 @@ public class SystemConfig {
         zk_timeout = Integer.parseInt(properties.getProperty("zk_timeout"));
         model_namespace = properties.getProperty("model_namespace");
         token = properties.getProperty("token");
+        SEPARATOR = properties.getProperty("SEPARATOR");
+        cloudConfigId = properties.getProperty("cloudConfigId");
+        cloudToken = properties.getProperty("cloudToken");
     }
 }

@@ -33,7 +33,7 @@ public class StringTool {
         System.out.println(attributes.size());
         logger.error(attributes.size());
         FeatureMap featureMap = new FeatureMap();
-        String[] seg = text.split(CommonConstants.SEPARATOR);
+        String[] seg = text.split(SystemConfig.SEPARATOR);
         String caseId = seg[0];
         Map<String,Feature> map = new HashMap<String,Feature>();
         for(int i=1; i<seg.length; i++){

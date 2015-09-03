@@ -9,6 +9,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 1 on 2015/8/28.
@@ -25,17 +27,25 @@ public class ReaderMapper extends Mapper<LongWritable,Text,LongWritable,BytesWri
          * output: skuId : thrift_byte[]
          */
         String json = context.getConfiguration().get("json");
+        String[] skuStr = context.getConfiguration().get("skus").split(";");
+        List<String> skuList = new ArrayList<String>();
+        for(String s : skuStr){
+            skuList.add(s);
+        }
+
+
         if(value != null && !"".equals(value.toString())){
             String skuId = StringTool.getKey(value.toString());
-            byte[] val = StringTool.String2ByteArr(value.toString(),json);
-
-            try {
-                //context.write(new Text(skuId),new BytesWritable(val));
-                context.write(new LongWritable(Long.parseLong(skuId)),new BytesWritable(val));
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(skuList.contains(skuId)){
+                byte[] val = StringTool.String2ByteArr(value.toString(),json);
+                try {
+                    //context.write(new Text(skuId),new BytesWritable(val));
+                    context.write(new LongWritable(Long.parseLong(skuId)),new BytesWritable(val));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

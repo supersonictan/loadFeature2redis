@@ -15,10 +15,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by Tanzhen on 2015/8/29.
@@ -48,10 +45,10 @@ public class BulkPush implements Tool {
         job.setMapperClass(ReaderMapper.class);
         job.setReducerClass(WriteReducer.class);
 
-        job.setNumReduceTasks(2);
+        job.setNumReduceTasks(8);
 
         //FileInputFormat.addInputPath(job, new Path("xiajun/data.txt"));//设置输入文件路径
-        FileInputFormat.addInputPath(job, new Path("/user/recsys/tmp.db/tmp_l2r_sku_feature_stat_7d_tb_new_2/dt=2015-08-28/000111_0"));//设置输入文件路径
+        FileInputFormat.addInputPath(job, new Path("/user/recsys/tmp.db/tmp_l2r_sku_feature_stat_7d_tb_new_2/dt=2015-08-29"));//设置输入文件路径
         FileOutputFormat.setOutputPath(job, new Path("tanzhen/"));//设置输出文件路径
 
         boolean successed = job.waitForCompletion(true);
@@ -66,7 +63,17 @@ public class BulkPush implements Tool {
 
     @Override
     public Configuration getConf() {
-        File f = new File("/data0/recsys/tanzhen/load2Redis/feature_meta.json");
+
+        String desc = getFeatureDesc("/data0/recsys/tanzhen/load2Redis/feature_meta.json");
+        String skus = getLoadSkus("/data0/recsys/tanzhen/skus.txt");
+
+        Configuration conf = new Configuration();
+        conf.set("json",desc);
+        conf.set("skus",skus);
+        return conf;
+    }
+    public String getFeatureDesc(String path){
+        File f = new File(path);
         Long fileLens = f.length();
         byte[] content = new byte[fileLens.intValue()];
         String s = null;
@@ -74,16 +81,39 @@ public class BulkPush implements Tool {
         try {
             fs = new FileInputStream(f);
             fs.read(content);
-            fs.close();
+
             s = new String(content,"UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fs != null) {
+                try {
+                    fs.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return s;
+    }
+    public String getLoadSkus(String path){
+        File f = new File(path);
+        StringBuffer s = new StringBuffer();
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(f));
+            String line = null;
+            while((line=br.readLine()) != null){
+                s.append(line+";");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Configuration conf = new Configuration();
-        conf.set("json",s);
-        return conf;
+        return s.toString();
     }
 }

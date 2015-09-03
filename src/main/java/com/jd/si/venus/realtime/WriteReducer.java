@@ -1,5 +1,7 @@
 package com.jd.si.venus.realtime;
 
+import com.jd.jim.cli.Cluster;
+import com.jd.si.jupiter.db.JimCacheCloud;
 import com.jd.si.jupiter.soa.Serialization.ThriftSerialization;
 import com.jd.si.venus.base.thrift.FeatureMap;
 import com.jd.si.venus.base.thrift.RealTimeModel;
@@ -17,11 +19,12 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.thrift.TException;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Tan on 2015/8/29.
  */
-public class WriteReducer extends Reducer<LongWritable, BytesWritable, LongWritable, Text> {
+public class WriteReducer extends Reducer<LongWritable, BytesWritable, NullWritable, NullWritable> {
     private static final Log logger = LogFactory.getLog(WriteReducer.class);
     @Override
     public void setup(Context context){
@@ -39,13 +42,12 @@ public class WriteReducer extends Reducer<LongWritable, BytesWritable, LongWrita
         } catch (TException e) {
             e.printStackTrace();
         }*/
-
-        FeatureMap ss = ThriftSerialization.fromBytes(FeatureMap.class, values.iterator().next().getBytes());
-        String s = ss.toString();
         try {
-            context.write(key,new Text(s));
-        } catch (IOException e) {
-            e.printStackTrace();
+            Thread.sleep(10);
+            byte[] bkey = ("realtime-feature-"+key.toString()).getBytes();
+            byte[] bVal = values.iterator().next().getBytes();
+            Cluster jimdb =  new JimCacheCloud(SystemConfig.cloudConfigId,SystemConfig.cloudToken).getJimClient();
+            jimdb.setEx(bkey,bVal,7, TimeUnit.DAYS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
