@@ -1,0 +1,260 @@
+{
+  "attributes": [
+    {
+      "name": "cid3",
+      "isCont": true
+    },
+    {
+      "name": "cid2",
+      "isCont": true
+    },
+    {
+      "name": "cid1",
+      "isCont": true
+    },
+    {
+      "name": "brand_id",
+      "isCont": true
+    },
+    {
+      "name": "sku_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_avg_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_cid3_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_avg_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_pin_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_cid3_pin_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_avg_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_cid3_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_avg_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_pin_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_cid3_pin_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_avg_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_avg_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_pin_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_avg_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_avg_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_pin_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_avg_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_avg_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_pin_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_avg_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_avg_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_pin_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_avg_browse_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_avg_pin_num_browse_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_pin_browse_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_avg_sale_qtty_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_avg_pin_num_ord_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_pin_ord_ratio_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_total_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "sku_avg_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_total_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "cid3_avg_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_total_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "brand_avg_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_total_cvr_7d",
+      "isCont": true
+    },
+    {
+      "name": "pword_avg_cvr_7d",
+      "isCont": true
+    }
+  ]
+}
