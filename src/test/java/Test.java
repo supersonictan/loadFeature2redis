@@ -1,6 +1,4 @@
 import com.google.gson.Gson;
-import com.jd.jim.cli.Cluster;
-import com.jd.si.jupiter.db.JimCacheCloud;
 import com.jd.si.venus.realtime.entity.FeatureDesc;
 import com.jd.si.venus.realtime.util.SystemConfig;
 
@@ -40,14 +38,14 @@ public class Test {
         System.out.println(seg.length);
 */
 
-        Cluster jimdb =  new JimCacheCloud("/redis/cluster/1183","1433400976033").getJimClient();
+        /*Cluster jimdb =  new JimCacheCloud("/redis/cluster/1183","1433400976033").getJimClient();
 
         byte[] bkey = ("realtime-test-"+123123).getBytes();
         byte[] bVal = "abcabc".getBytes();
         jimdb.setEx(bkey,bVal,7, TimeUnit.DAYS);
 
         byte[] val = jimdb.get(bkey);
-        System.out.println(new String(val));
+        System.out.println(new String(val));*/
 
 
     }

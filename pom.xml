@@ -16,13 +16,31 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.jd.si.venus.thrift</groupId>
-            <artifactId>venus-si-thrift</artifactId>
+            <groupId>com.jd.si.venus.feature.client</groupId>
+            <artifactId>venus-si-feature-client</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.jd.si</groupId>
+                    <artifactId>base-soa</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <artifactId>base-soa</artifactId>
-            <groupId>com.jd.si.jupiter.soa</groupId>
+            <groupId>com.jd.si.venus.thrift</groupId>
+            <artifactId>venus-si-thrift</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -36,11 +54,6 @@
             <version>1.2.16</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.jd.si.venus.thrift</groupId>
-            <artifactId>venus-si-thrift</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -108,7 +121,7 @@
                     <archive>
                         <manifest>
                             <mainClass>com.jd.si.venus.realtime.BulkPush</mainClass>
-                            <!--<mainClass>com.jd.si.venus.realtime.Test</mainClass>-->
+                            <!--<mainClass>com.jd.si.venus.realtime.WriteJsonFromRedisOnline</mainClass>-->
                         </manifest>
                     </archive>
                 </configuration>

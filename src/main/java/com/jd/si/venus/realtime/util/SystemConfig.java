@@ -20,6 +20,7 @@ public class SystemConfig {
     //temp
     public static final String cloudConfigId ;
     public static final String cloudToken ;
+    public static final String jmToken ;
 
 
     static {
@@ -47,5 +48,6 @@ public class SystemConfig {
         SEPARATOR = properties.getProperty("SEPARATOR");
         cloudConfigId = properties.getProperty("cloudConfigId");
         cloudToken = properties.getProperty("cloudToken");
+        jmToken = properties.getProperty("jmToken");
     }
 }

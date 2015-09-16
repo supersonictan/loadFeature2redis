@@ -1,3 +1,4 @@
+/*
 package com.jd.si.venus.realtime;
 
 import com.google.gson.Gson;
@@ -16,15 +17,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * Created by TanZhen on 2015/8/10.
- */
+ *//*
 
-public class Test {
+
+public class WriteJsonFromRedisOnline {
 
     public static void main(String[] args) throws Exception {
 
-    /*    File f = new File("d:\\feature_meta.json");  //length= 67
+    */
+/*    File f = new File("d:\\feature_meta.json");  //length= 67
         Long fileLens = f.length();
         byte[] content = new byte[fileLens.intValue()];
 
@@ -37,7 +41,8 @@ public class Test {
         Gson gson = new Gson();
         FeatureDesc featureDesc = gson.fromJson(s,FeatureDesc.class);
         System.out.println(featureDesc.attributes.size());
-*/
+*//*
+
         Map<String,String> map = new HashMap<String,String>();
         List<String> skus = new ArrayList<String>();
         BufferedReader br  = null;
@@ -61,7 +66,7 @@ public class Test {
         }
         br.close();
 
-        BufferedWriter bw = new BufferedWriter(new FileWriter("/data0/recsys/tanzhen/load2Redis/json.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("/data0/recsys/tanzhen/json.txt"));
         for(Map.Entry<String,String> entry : map.entrySet()){
             bw.write(entry.getKey()+"@"+entry.getValue()+"\n");
         }
@@ -74,4 +79,4 @@ public class Test {
 
     }
 
-}
+}*/

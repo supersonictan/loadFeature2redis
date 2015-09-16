@@ -9,6 +9,8 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Counter;
+import org.apache.hadoop.mapreduce.Counters;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -23,6 +25,9 @@ import java.io.*;
 public class BulkPush implements Tool {
     private static final Log logger = LogFactory.getLog(BulkPush.class);
     Configuration configuration;
+    public enum  counterEnum{
+        Mapper_read,Mapper_send,Reduce_rev,Reduce_send
+    }
 
     public static void main(String[] args){
         try {
@@ -39,20 +44,32 @@ public class BulkPush implements Tool {
         Job job = Job.getInstance(getConf(), "haha");
         job.setJarByClass(BulkPush.class);
 
-        job.setMapOutputKeyClass(LongWritable.class); //map的Key类型
-        job.setMapOutputValueClass(BytesWritable.class);
+        job.setMapOutputKeyClass(Text.class); //map的Key类型
+        job.setMapOutputValueClass(Text.class);
+        //job.setMapOutputValueClass(BytesWritable.class);
 
         job.setMapperClass(ReaderMapper.class);
         job.setReducerClass(WriteReducer.class);
 
-        job.setNumReduceTasks(8);
+        job.setNumReduceTasks(15);
 
-        //FileInputFormat.addInputPath(job, new Path("xiajun/data.txt"));//设置输入文件路径
-        FileInputFormat.addInputPath(job, new Path("/user/recsys/tmp.db/tmp_l2r_sku_feature_stat_7d_tb_new_2/dt=2015-08-29"));//设置输入文件路径
+        FileInputFormat.addInputPath(job, new Path("/user/recsys/tmp.db/tmp_l2r_sku_feature_stat_7d_tb_new_2/dt=2015-09-06/"));//设置输入文件路径
         FileOutputFormat.setOutputPath(job, new Path("tanzhen/"));//设置输出文件路径
 
+        long startTime = System.currentTimeMillis();
         boolean successed = job.waitForCompletion(true);
         int i = successed ? 0 : 1;
+        long latency = System.currentTimeMillis() - startTime;
+        Counters counterGroups = job.getCounters();
+        Counter map_read = counterGroups.findCounter(counterEnum.Mapper_read);
+        Counter map_send = counterGroups.findCounter(counterEnum.Mapper_send);
+        Counter red_rev = counterGroups.findCounter(counterEnum.Reduce_rev);
+        Counter red_send = counterGroups.findCounter(counterEnum.Reduce_send);
+        System.out.println("map_read="+map_read.getValue());
+        System.out.println("mapsend=" + map_send.getValue());
+        System.out.println("red_read="+red_rev.getValue());
+        System.out.println("red_sed="+red_send.getValue());
+        System.out.println("total time= "+ latency/1000/60 +" min");
         return i;
     }
 
@@ -64,8 +81,8 @@ public class BulkPush implements Tool {
     @Override
     public Configuration getConf() {
 
-        String desc = getFeatureDesc("/data0/recsys/tanzhen/load2Redis/feature_meta.json");
-        String skus = getLoadSkus("/data0/recsys/tanzhen/skus.txt");
+        String desc = getFeatureDesc("/data0/recsys/tanzhen/feature_meta.json");
+        String skus = getLoadSkus("/data0/recsys/tanzhen/skus2.txt");
 
         Configuration conf = new Configuration();
         conf.set("json",desc);
